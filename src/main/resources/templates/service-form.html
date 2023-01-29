@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Application</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Конвертер валют</h1>
+    <h2> Воспользуйся формой ниже </h2>
+    <h3> Введите валюту которую хотите конвертировать RUB, EUR, USD </h3>
+
+    <form th:method="post" th:action="@{/converter-handler}">
+        <label>
+            CurToBuy:
+            <input type="text" name="curToBuy">
+        </label>
+        <label>
+            CurToSell:
+            <input type="text" name="curToSell">
+        </label>
+        <label>
+            Amount:
+            <input type="number" name="amount">
+        </label>
+
+        <button> Конвертировать валюту</button>
+
+    </form>
+    <br>
+    <label>
+        <p th:if="${currency != null}">Итог: [[${currency}]]</p>
+        <a th:if="${currency != null}" th:href="@{/converter}"> На главную</a>
+    </label>
+
+</div>
+</body>
+</html>
